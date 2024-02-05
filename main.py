@@ -25,9 +25,12 @@ df_pepsi = pd.DataFrame(daily_pepsi_corp, columns = ["Adj Close"])
 df_cocacola = pd.DataFrame(daily_cocacola_corp, columns = ["Adj Close"])
 df_foods = pd.DataFrame(daily_tysonfoods, columns = ["Adj Close"])
 
+#now I must join all dataframe
 
-# print(df_sp500)
-
+merged_df = pd.merge(df_sp500, df_pepsi, left_index=True, right_index=True, suffixes=('_df_sp500', '_df_pepsi'))
+merged_df = pd.merge(merged_df, df_cocacola, left_index=True, right_index=True)
+merged_df = pd.merge(merged_df, df_foods, left_index=True, right_index=True)
+print(merged_df)
 
 
 
